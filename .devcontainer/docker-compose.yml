@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  front-end:
+      build:
+        context: ../
+        dockerfile: .devcontainer/Dockerfile
+      container_name: front-end_c
+      ports:
+        - '8080:8080'
+      volumes:
+        - ..:/front-end:cached
+        - ../.ssh:/root/.ssh
+      stdin_open: true
+      tty: true
+      command: /bin/sh -c "while sleep 1000; do :; done"
