@@ -1,8 +1,16 @@
+import Controller from "./components/Controller";
+import TopBar from "./components/Topbar";
 function App() {
   return (
-    <div className="App">
-      Front-end-test-commit
+    <div>
+      <TopBar />
+      <div>123</div>
+      <div>123</div>
+      <div>123</div>
+      <div>123</div>
+      <Controller />
     </div>
+
   );
 }
 
