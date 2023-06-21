@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Slider from './Slider.svg'
 import useControlEvent from '../../hooks/useControlEvent'
-import { calcValueOnMouseMove } from '../../utils/utils'
+import { calValOnMouseMove } from '../../utils/utils'
 
 //props for this slider, use useMemo
 //sensitivity
@@ -10,7 +10,7 @@ import { calcValueOnMouseMove } from '../../utils/utils'
 //size of the track
 
 const TempoSlider: React.FC = () => {
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState(0.5)
     const [sliderPos, setSliderPos] = useState(0)
     const sliderTrackRef = useRef<HTMLImageElement>(null)
 
@@ -19,13 +19,12 @@ const TempoSlider: React.FC = () => {
     }, [value])
 
     const calculateSliderPos = (sliderVal: number) => {
-        return 100 - (sliderVal + 1) * 50
+        //console.log(sliderVal)
+        return 100 - (sliderVal * 100)
     }
 
-    const handleChangeOnMouseMove = (event: MouseEvent): void => {
-        if (!sliderTrackRef.current) return
-        const sliderTrackDim = sliderTrackRef.current.getBoundingClientRect()
-        setValue(calcValueOnMouseMove(event.clientY, sliderTrackDim.top, sliderTrackDim.bottom))
+    const handleChangeOnMouseMove = (event: MouseEvent, startingY: number): void => {
+        setValue(calValOnMouseMove(value, startingY, event.clientY, 1))
     }
 
     const onMouseDown = useControlEvent(handleChangeOnMouseMove)
@@ -35,7 +34,7 @@ const TempoSlider: React.FC = () => {
             <div className='bg-secondary-black p-1 text-center rounded-sm'>{value}</div>
             <div className='bg-secondary-black p-1 px-2 mt-2 py-4 rounded-sm'>
                 <div className='relative'>
-                    <div onMouseDown={onMouseDown} className={`absolute bg-orange-400 cursor-pointer h-4 w-11 -translate-y-2`} style={{ top: `${sliderPos}%` }} ></div>
+                    <div onMouseDown={onMouseDown} className={`absolute opacity-50 bg-orange-400 cursor-pointer h-4 w-11 -translate-y-2`} style={{ top: `${sliderPos}%` }} ></div>
                     <img draggable="false" ref={sliderTrackRef} src={Slider} />
                 </div>
             </div>

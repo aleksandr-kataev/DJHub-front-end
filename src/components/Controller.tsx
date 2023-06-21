@@ -1,3 +1,4 @@
+import Deck from './Deck';
 import Knob from './Knob'
 import SongInfo from './SongInfo'
 import TempoSlider from './sliders/TempoSlider';
@@ -20,13 +21,13 @@ function Controller() {
             </div>
             <TempoSlider />
             <div className='bg-secondary-black text-white'>
-                jog1
+                <Deck />
             </div>
             <div className='bg-secondary-black text-white'>
                 mixer
             </div>
             <div className='bg-secondary-black text-white'>
-                jog2
+                <Deck />
             </div>
             <TempoSlider />
             <div className='bg-secondary-black py-2 px-6 rounded'>

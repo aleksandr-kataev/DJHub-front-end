@@ -1,10 +1,13 @@
-type CallbackFunction = (event: MouseEvent) => void
+import { useState } from "react";
+
+type CallbackFunction = (event: MouseEvent, startingY: number) => void
 
 function useControlEvent(callback: CallbackFunction) {
     const handleMouseDown = (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault()
+        let startingY = event.clientY
         const onMouseMove = (event: MouseEvent) => {
-            callback(event);
+            callback(event, startingY);
         };
         const onMouseUp = () => {
             document.removeEventListener('mousemove', onMouseMove);
@@ -13,7 +16,7 @@ function useControlEvent(callback: CallbackFunction) {
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
     };
-    return handleMouseDown;
+    return handleMouseDown
 }
 
 export default useControlEvent

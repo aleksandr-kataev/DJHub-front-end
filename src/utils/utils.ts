@@ -1,5 +1,15 @@
-export function calcValueOnMouseMove(mouseY: number, top: number, bottom: number, sensitivity?: number) {
-    const newValue = (-(((mouseY - (bottom - top) - top) / (bottom - top)) * 2) - 1) * (sensitivity || 1)
-    // Get in range -1 to 1 and round to 3 
-    return Number(Math.max(-1, Math.min(1, newValue)).toFixed(3))
+export function calValOnMouseMove(prevVal: number, startingY: number, currentY: number, sensitivity?: number) {
+    const increment = sensitivity || 1;
+    const deltaY = -(currentY - startingY)
+    let newValue = ((deltaY * increment))
+    newValue = (newValue / 2) / 100
+    return Math.max(0, Math.min(1, Number((prevVal + newValue).toFixed(3))))
+}
+
+export function calValOnMouseMoveNoRange(prevVal: number, startingY: number, currentY: number, sensitivity?: number) {
+    const increment = sensitivity || 1;
+    const deltaY = -(currentY - startingY);
+    let newValue = (deltaY * increment) / 200;
+    const result = (prevVal + newValue) % 1;
+    return result < 0 ? 1 + result : result
 }
