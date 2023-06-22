@@ -1,17 +1,12 @@
-import Controller from "./components/Controller";
-import TopBar from "./components/Topbar";
+import Controller from "./components/Controller"
+import TopBar from "./components/Topbar"
 function App() {
-  return (
-    <div>
-      <TopBar />
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <Controller />
-    </div>
-
-  );
+    return (
+        <div>
+            <TopBar />
+            <Controller />
+        </div>
+    )
 }
 
-export default App;
+export default App
