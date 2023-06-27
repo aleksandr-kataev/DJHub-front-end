@@ -5,7 +5,7 @@ import TempoSlider from "./sliders/TempoSlider"
 
 function Controller() {
     return (
-        <div className="bg-primary-black p-2 flex justify-around">
+        <div className="bg-primary-black p-2 flex justify-around select-none">
             <div className="bg-secondary-black py-2 px-6 rounded">
                 <div className="py-4">
                     <SongInfo title={"ABR - (Monty Remix)"} artist="Cesco" />

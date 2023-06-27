@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react"
-import useControlEvent from "../hooks/useControlEvent"
+import React, { useState } from "react"
+import knobSVG from "../assets/knob.svg"
+import useControlEvent, { CallbackFunction } from "../hooks/useControlEvent"
 import { calValOnMouseMove } from "../utils/utils"
 
 type Size = "S" | "M" | "L"
@@ -10,7 +11,6 @@ interface KnobProps {
 
 const Knob: React.FC<KnobProps> = (props: KnobProps) => {
     const [value, setValue] = useState(0.5)
-    const knobRef = useRef<HTMLDivElement>(null)
 
     const sizes = {
         S: "w-6 h-6",
@@ -18,20 +18,31 @@ const Knob: React.FC<KnobProps> = (props: KnobProps) => {
         L: "w-10 h-10",
     }
 
-    const handleChangeOnMouseMove = (event: MouseEvent, startingY: number): void => {
+    const handleOnMouseMove: CallbackFunction = (event: MouseEvent, startingY: number): void => {
         setValue(calValOnMouseMove(value, startingY, event.clientY, 2))
     }
-    const handleMouseDown = useControlEvent(handleChangeOnMouseMove)
+    const onMouseDown = useControlEvent(handleOnMouseMove, "Y")
+
+    const calculateKnobAngle = (value: number) => {
+        return value * 270 - 135
+    }
 
     return (
         <div
-            ref={knobRef}
             className={`${sizes[props.size]} relative rounded-full bg-gray-200 cursor-pointer`}
-            onMouseDown={handleMouseDown}
+            onMouseDown={onMouseDown}
         >
-            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold text-gray-700">
-                {value}
-            </span>
+            <img
+                draggable={false}
+                src={knobSVG}
+                onMouseDown={onMouseDown}
+                alt="SVG"
+                style={{
+                    transform: `rotate(${calculateKnobAngle(value)}deg)`,
+                    width: "100%",
+                    height: "100%",
+                }}
+            />
         </div>
     )
 }

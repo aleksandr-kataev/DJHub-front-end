@@ -8,10 +8,10 @@ const Deck: React.FC = () => {
     const [jogWheelRotation, setJogWheelRotation] = useState(12.5)
     const [isPlaying, setIsPlaying] = useState(false)
 
-    const handleChangeOnMouseMove = (event: MouseEvent, startingY: number): void => {
+    const handleOnMouseMove = (event: MouseEvent, startingY: number): void => {
         setJogWheelRotation(calValOnMouseMoveNoRange(jogWheelRotation, startingY, event.clientY, 2))
     }
-    const handleMouseDown = useControlEvent(handleChangeOnMouseMove)
+    const onMouseDown = useControlEvent(handleOnMouseMove, "Y")
 
     const calculateJogAngle = (value: number) => {
         return value * 360
@@ -23,7 +23,7 @@ const Deck: React.FC = () => {
                 <img
                     draggable={false}
                     src={jogSVG}
-                    onMouseDown={handleMouseDown}
+                    onMouseDown={onMouseDown}
                     alt="SVG"
                     style={{
                         transform: `rotate(${calculateJogAngle(jogWheelRotation)}deg)`,
