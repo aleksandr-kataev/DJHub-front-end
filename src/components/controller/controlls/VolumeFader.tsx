@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import faderSVG from "../../assets/fader.svg"
-import useControlEvent from "../../hooks/useControlEvent"
-import { calValOnMouseMove } from "../../utils/utils"
+import volumeFaderSliderSVG from "../../../assets/volumeFaderSlider.svg"
+import volumeFaderTrackSVG from "../../../assets/volumeFaderTrack.svg"
+import useControlEvent from "../../../hooks/useControlEvent"
+import { calValOnMouseMove } from "../../../utils/utils"
 
-const Fader: React.FC = () => {
+const VolumeFader: React.FC = () => {
     const [value, setValue] = useState(0.5)
     const [sliderPos, setSliderPos] = useState(0)
 
@@ -23,14 +24,16 @@ const Fader: React.FC = () => {
 
     return (
         <div className="relative">
-            <div
+            <img
+                className="absolute cursor-pointer"
+                draggable="false"
+                src={volumeFaderSliderSVG}
                 onMouseDown={onMouseDown}
-                className={`absolute opacity-50 bg-orange-400 cursor-pointer h-4 w-12 -translate-y-2`}
-                style={{ top: `${sliderPos}%` }}
-            ></div>
-            <img draggable="false" src={faderSVG} />
+                style={{ top: `${sliderPos}%`, transform: `translateY(-9px)` }}
+            />
+            <img draggable="false" src={volumeFaderTrackSVG} />
         </div>
     )
 }
 
-export default Fader
+export default VolumeFader

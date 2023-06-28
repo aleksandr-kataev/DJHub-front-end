@@ -1,7 +1,7 @@
 import Deck from "./Deck"
 import Mixer from "./Mixer"
 import SongInfo from "./SongInfo"
-import TempoSlider from "./sliders/TempoSlider"
+import PitchControl from "./controlls/PitchControl"
 
 function Controller() {
     return (
@@ -19,7 +19,7 @@ function Controller() {
                     <button className="bg-purple py-4 px-10">F</button>
                 </div>
             </div>
-            <TempoSlider />
+            <PitchControl />
             <div className="bg-secondary-black text-white">
                 <Deck />
             </div>
@@ -29,7 +29,7 @@ function Controller() {
             <div className="bg-secondary-black text-white">
                 <Deck />
             </div>
-            <TempoSlider />
+            <PitchControl />
             <div className="bg-secondary-black py-2 px-6 rounded">
                 <div className="py-4">
                     <SongInfo title={"ABR - (Monty Remix)"} artist="Cesco" />

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import crossfaderSVG from "../../assets/crossfader.svg"
-import useControlEvent, { CallbackFunction } from "../../hooks/useControlEvent"
-import { calValOnMouseMove } from "../../utils/utils"
+import crossFaderTrackSVG from "../../../assets/crossFaderTrack.svg"
+import crossFaderSliderSVG from "../../../assets/crossFaderSlider.svg"
+import useControlEvent, { CallbackFunction } from "../../../hooks/useControlEvent"
+import { calValOnMouseMove } from "../../../utils/utils"
 
 const Crossfader: React.FC = () => {
     const [value, setValue] = useState(0.5)
@@ -23,12 +24,14 @@ const Crossfader: React.FC = () => {
 
     return (
         <div className="relative">
-            <div
+            <img
+                className="absolute cursor-pointer"
+                draggable="false"
+                src={crossFaderSliderSVG}
                 onMouseDown={onMouseDown}
-                className={`absolute opacity-50 bg-orange-400 cursor-pointer h-12 w-4 -translate-y-2`}
-                style={{ left: `${sliderPos}%` }}
-            ></div>
-            <img draggable="false" src={crossfaderSVG} />
+                style={{ left: `${sliderPos}%`, transform: `translateY(-10px) translateX(-12px)`}}
+            />
+            <img draggable="false" src={crossFaderTrackSVG} />
         </div>
     )
 }

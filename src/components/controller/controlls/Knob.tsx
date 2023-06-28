@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import knobSVG from "../assets/knob.svg"
-import useControlEvent, { CallbackFunction } from "../hooks/useControlEvent"
-import { calValOnMouseMove } from "../utils/utils"
+import useControlEvent, { CallbackFunction } from "../../../hooks/useControlEvent"
+import { calValOnMouseMove } from "../../../utils/utils"
+import knobSVG from "../../../assets/knob.svg"
 
 type Size = "S" | "M" | "L"
 

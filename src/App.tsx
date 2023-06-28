@@ -1,4 +1,4 @@
-import Controller from "./components/Controller"
+import Controller from "./components/controller/Controller"
 import TopBar from "./components/Topbar"
 function App() {
     return (

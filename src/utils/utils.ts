@@ -4,7 +4,7 @@ export function calValOnMouseMove(prevVal: number, initVal: number, currentVal: 
     const delta = -(currentVal - initVal)
     let newValue = delta * increment
     newValue = newValue / 200
-    return Math.max(0, Math.min(1, Number((prevVal + newValue).toFixed(3))))
+    return Math.max(0, Math.min(1, Number((prevVal + newValue).toFixed(2))))
 }
 
 // Returns value from 0 to 1, if value goes above 1 it goes back to 0 like a clock

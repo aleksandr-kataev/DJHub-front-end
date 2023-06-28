@@ -1,6 +1,7 @@
-import Knob from "./Knob"
-import Crossfader from "./sliders/Crossfader"
-import Fader from "./sliders/Fader"
+import headphonesSVG from "../../assets/headphones.svg"
+import Crossfader from "./controlls/Crossfader"
+import Knob from "./controlls/Knob"
+import VolumeFader from "./controlls/VolumeFader"
 
 const Mixer: React.FC = () => {
     return (
@@ -11,20 +12,22 @@ const Mixer: React.FC = () => {
                     <Knob size="M" />
                     <Knob size="M" />
                     <Knob size="L" />
-                    <button>head</button>
+                    <button className="bg-primary-grey h-4 w-7 grid grid-cols-1 place-items-center mt-3">
+                        <img draggable="false" src={headphonesSVG} />
+                    </button>
                 </div>
                 <div>
                     <div className="flex justify-around">
                         <div className="grid grid-cols-1 place-items-center">
                             <Knob size="S" />
                             <div className="mt-4">
-                                <Fader />
+                                <VolumeFader />
                             </div>
                         </div>
                         <div className="grid grid-cols-1 place-items-center">
                             <Knob size="S" />
                             <div className="mt-4">
-                                <Fader />
+                                <VolumeFader />
                             </div>
                         </div>
                     </div>
@@ -37,7 +40,9 @@ const Mixer: React.FC = () => {
                     <Knob size="M" />
                     <Knob size="M" />
                     <Knob size="L" />
-                    <button>head</button>
+                    <button className="bg-primary-grey h-4 w-7 grid grid-cols-1 place-items-center mt-3">
+                        <img draggable="false" src={headphonesSVG} />
+                    </button>
                 </div>
             </div>
         </div>

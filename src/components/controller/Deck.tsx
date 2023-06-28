@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import jogSVG from "../assets/jog.svg"
-import useControlEvent from "../hooks/useControlEvent"
-import { calValOnMouseMoveNoRange } from "../utils/utils"
+import useControlEvent from "../../hooks/useControlEvent"
+import { calValOnMouseMoveNoRange } from "../../utils/utils"
+import jogSVG from "../../assets/jog.svg"
 
 const Deck: React.FC = () => {
     const [trackPos, setTrackPos] = useState(0) //in miliseconds?

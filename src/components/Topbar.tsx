@@ -1,4 +1,4 @@
-import Knob from "./Knob"
+import Knob from "./controller/controlls/Knob"
 
 function TopBar() {
     return (
